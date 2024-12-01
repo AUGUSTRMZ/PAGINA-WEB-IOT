@@ -1,0 +1,98 @@
+body {
+  background-color: #36665f;
+  /* Para CSS */
+  font-family: "Oswald", sans-serif;
+}
+
+.navbar {
+  background-color: #333;
+  display: flex;
+  justify-content: space-between; /* Espacio entre los elementos principales */
+  align-items: center; /* Alinea verticalmente los elementos al centro */
+  padding: 10px 20px;
+  height: 60px;
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+  position: fixed; /* Fija la barra en la parte superior */
+  top: 0; /* Posición en la parte superior */
+  left: 0; /* Alineación a la izquierda de la pantalla */
+  z-index: 1000; /* Asegura que la barra esté por encima del contenido */
+}
+
+/* Estilo para el menú en el lado izquierdo */
+.menu-izquierda {
+  display: flex;
+}
+
+.menu-izquierda ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.menu-izquierda a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 14px 20px;
+}
+
+.menu-izquierda a:hover {
+  background-color: #555;
+}
+
+/* Contenedor para el logo y el título en el centro */
+.center-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: scroll;
+  white-space: nowrap;
+  text-align: center;
+  margin-left: 200px; /* Corregido */
+  flex-grow: 1;
+  justify-content: center;
+}
+
+/* Estilos para el logo */
+.logo {
+  width: 60px; /* Tamaño ajustable del logo */
+  height: auto;
+  margin: 0;
+}
+
+/* Estilos para el título */
+.titulo {
+  color: #ffff;
+  font-size: 24px; /* Ajusta el tamaño de la fuente para que no se desborde */
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap; /* Asegura que el texto no se divida en varias líneas */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es demasiado largo */
+}
+
+/* Estilo del menú desplegable */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #555;
+}

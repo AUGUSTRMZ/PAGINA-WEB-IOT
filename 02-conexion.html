@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú Desplegable con Logo y Título</title>
+    <link rel="stylesheet" href="02-conexion.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Barra de navegación -->
+    <div class="navbar">
+      <!-- Menú en el lado izquierdo -->
+      <div class="menu-izquierda">
+        <ul>
+          <li>
+            <a href="01-menuPrincipal2.html"
+              ><img src="images/turn-back.png" alt="home logo" width="40px"
+            /></a>
+          </li>
+          <li class="dropdown">
+            <a href="#menu" class="dropbtn"
+              ><img src="images/menu.png" alt="menu-logo" width="40px"
+            /></a>
+            <div class="dropdown-content">
+              <a href="05-funcionalidades.html"
+                >Funciones
+                <img src="images/tools.png" alt="tools-logo" width="14px"
+              /></a>
+              <a href="02-conexion.html"
+                >Conexion
+                <img src="images/wifi-alt.png" alt="wifi-logo" width="14px"
+              /></a>
+              <a href="06-historialDatos.html"
+                >Data history
+                <img src="images/auto-sync.png" alt="data-logo" width="14px"
+              /></a>
+            </div>
+          </li>
+          <li>
+            <a href="04-contacto.html"
+              ><img
+                src="images/customer-service.png"
+                alt="contact-logo"
+                width="40px"
+            /></a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Logo y título en el centro -->
+      <div class="center-content">
+        <img
+          src="images/Diseño_sin_título-4-removebg-preview.png"
+          alt="Logo Empresa"
+          class="logo"
+          width="40px"
+        />
+        <h1 class="titulo">GreenFriend</h1>
+      </div>
+    </div>
+
+    <section class="presentacion" id="presentacion">
+      <h1>Conecta tu nuevo dispositivo</h1>
+      <p>
+        GreenFriend es la solucion ideal para el cuidado de tus plantas. Con
+        tecnologia avanzada y un diseño intuitivo, este producto te ayuda a
+        monitorear la humedad y la temperatura, asegurando el crecimiento y
+        salud de tus plantas.
+      </p>
+    </section>
+    <section id="datos-ubidots">
+  <h2>Datos en tiempo real</h2>
+  <p>Temperatura de Suelo: <span id="temp-suelo">Cargando...</span></p>
+  <p>Temperatura de Ambiente: <span id="temp-ambiente">Cargando...</span></p>
+  <p>Estado de Comparación: <span id="estado-comparacion">Esperando...</span></p>
+</section>
+
+<script>
+  const UBIDOTS_TOKEN = "TU_TOKEN_AQUI";
+  const DEVICE_LABEL = "nombre_del_dispositivo";
+  const VARIABLE_TEMP_SUELO = "temp_suelo";
+  const VARIABLE_TEMP_AMBIENTE = "temp_ambiente";
+
+  async function obtenerDatosUbidots() {
+    try {
+      const urlTempSuelo = `https://industrial.api.ubidots.com/api/v1.6/devices/${DEVICE_LABEL}/${VARIABLE_TEMP_SUELO}/lv`;
+      const urlTempAmbiente = `https://industrial.api.ubidots.com/api/v1.6/devices/${DEVICE_LABEL}/${VARIABLE_TEMP_AMBIENTE}/lv`;
+
+      const headers = {
+        "Content-Type": "application/json",
+        "X-Auth-Token": UBIDOTS_TOKEN,
+      };
+
+      const [respSuelo, respAmbiente] = await Promise.all([
+        fetch(urlTempSuelo, { headers }),
+        fetch(urlTempAmbiente, { headers }),
+      ]);
+
+      const tempSuelo = await respSuelo.text();
+      const tempAmbiente = await respAmbiente.text();
+
+      document.getElementById("temp-suelo").innerText = `${tempSuelo}°C`;
+      document.getElementById("temp-ambiente").innerText = `${tempAmbiente}°C`;
+
+      // Enviar los datos al backend para comparar
+      compararDatos(tempSuelo, tempAmbiente);
+    } catch (error) {
+      console.error("Error al obtener datos de Ubidots:", error);
+    }
+  }
+
+  async function compararDatos(tempSuelo, tempAmbiente) {
+    try {
+      const response = await fetch("/comparar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ tempSuelo, tempAmbiente }),
+      });
+
+      const resultado = await response.json();
+      document.getElementById("estado-comparacion").innerText =
+        resultado.estado || "Error en la comparación";
+    } catch (error) {
+      console.error("Error al comparar datos:", error);
+    }
+  }
+
+  setInterval(obtenerDatosUbidots, 5000);
+  obtenerDatosUbidots();
+</script>
+  </body>
+</html>

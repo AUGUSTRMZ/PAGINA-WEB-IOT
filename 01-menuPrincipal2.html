@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú Desplegable con Logo y Título</title>
+    <link rel="stylesheet" href="01-menuPrincipal2.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Barra de navegación -->
+    <div class="navbar">
+      <!-- Menú en el lado izquierdo -->
+      <div class="menu-izquierda">
+        <ul>
+          <li>
+            <a href="#inicio"
+              ><img src="images/home.png" alt="home logo" width="40px"
+            /></a>
+          </li>
+          <li class="dropdown">
+            <a href="#menu" class="dropbtn"
+              ><img src="images/menu.png" alt="menu-logo" width="40px"
+            /></a>
+            <div class="dropdown-content">
+              <a href="05-funcionalidades.html"
+                >Funciones
+                <img src="images/tools.png" alt="tools-logo" width="14px"
+              /></a>
+              <a href="02-conexion.html"
+                >Conexion
+                <img src="images/wifi-alt.png" alt="wifi-logo" width="14px"
+              /></a>
+              <a href="06-historialDatos.html"
+                >Data history
+                <img src="images/auto-sync.png" alt="data-logo" width="14px"
+              /></a>
+            </div>
+          </li>
+          <li>
+            <a href="04-contacto.html"
+              ><img
+                src="images/customer-service.png"
+                alt="contact-logo"
+                width="40px"
+            /></a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Logo y título en el centro -->
+      <div class="center-content">
+        <img
+          src="images/Diseño_sin_título-4-removebg-preview.png"
+          alt="Logo Empresa"
+          class="logo"
+          width="40px"
+        />
+        <h1 class="titulo">GreenFriend</h1>
+      </div>
+    </div>
+
+    <section class="presentacion" id="presentacion">
+      <h1>Descubre GreenFriend</h1>
+      <p>
+        GreenFriend es la solucion ideal para el cuidado de tus plantas. Con
+        tecnologia avanzada y un diseño intuitivo, este producto te ayuda a
+        monitorear la humedad y la temperatura, asegurando el crecimiento y
+        salud de tus plantas.
+      </p>
+      <div class="foto-Producto" id="fotoP">
+        <img
+          src="images/51vzWZUuB1L._AC_UF894,1000_QL80_.jpg"
+          alt="fotito"
+          width="450"
+          height="550"
+        />
+      </div>
+    </section>
+
+    <div class="TituloProducto" id="TituloProducto">
+      <h1>Adquiere el tuyo ahora &darr;</h1>
+    </div>
+    <!--Secciones de contenido-->
+    <section class="productos">
+      <div class="producto">
+        <a href="03-producto1.html">
+          <img src="images/insert-picture-icon.png" alt="Producto 1"
+        /></a>
+
+        <h2>Producto 1</h2>
+        <p>Descripción breve del producto 1.</p>
+      </div>
+      <div class="producto">
+        <a href="03-producto2.html">
+          <img src="images/insert-picture-icon.png" alt="Producto 2" />
+        </a>
+        <h2>Producto 2</h2>
+        <p>Descripción breve del producto 2.</p>
+      </div>
+    </section>
+  </body>
+</html>
