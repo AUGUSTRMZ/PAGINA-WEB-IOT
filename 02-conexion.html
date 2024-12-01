@@ -1,136 +1,192 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menú Desplegable con Logo y Título</title>
-    <link rel="stylesheet" href="02-conexion.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- Barra de navegación -->
-    <div class="navbar">
-      <!-- Menú en el lado izquierdo -->
-      <div class="menu-izquierda">
-        <ul>
-          <li>
-            <a href="01-menuPrincipal2.html"
-              ><img src="images/turn-back.png" alt="home logo" width="40px"
-            /></a>
-          </li>
-          <li class="dropdown">
-            <a href="#menu" class="dropbtn"
-              ><img src="images/menu.png" alt="menu-logo" width="40px"
-            /></a>
-            <div class="dropdown-content">
-              <a href="05-funcionalidades.html"
-                >Funciones
-                <img src="images/tools.png" alt="tools-logo" width="14px"
-              /></a>
-              <a href="02-conexion.html"
-                >Conexion
-                <img src="images/wifi-alt.png" alt="wifi-logo" width="14px"
-              /></a>
-              <a href="06-historialDatos.html"
-                >Data history
-                <img src="images/auto-sync.png" alt="data-logo" width="14px"
-              /></a>
-            </div>
-          </li>
-          <li>
-            <a href="04-contacto.html"
-              ><img
-                src="images/customer-service.png"
-                alt="contact-logo"
-                width="40px"
-            /></a>
-          </li>
-        </ul>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreenFriend - Interfaz de Monitoreo</title>
+  <link href="02-conexion.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Oswald', sans-serif;
+      background-color: #2a3d36;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
 
-      <!-- Logo y título en el centro -->
-      <div class="center-content">
-        <img
-          src="images/Diseño_sin_título-4-removebg-preview.png"
-          alt="Logo Empresa"
-          class="logo"
-          width="40px"
-        />
-        <h1 class="titulo">GreenFriend</h1>
-      </div>
+    .navbar {
+      background-color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      height: 60px;
+    }
+
+    .menu-izquierda ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    .menu-izquierda a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+    }
+
+    .menu-izquierda a:hover {
+      background-color: #555;
+    }
+
+    .center-content h1 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .monitoreo {
+      text-align: center;
+      margin: 80px auto;
+      padding: 20px;
+      background-color: #3b4e47;
+      border-radius: 10px;
+      max-width: 800px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .monitor-stats {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .monitor-item {
+      flex: 1 1 30%;
+      margin: 10px;
+      padding: 10px;
+      background-color: #444;
+      border-radius: 10px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .monitor-item h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #76c7c0;
+    }
+
+    .monitor-item p {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de navegación -->
+  <div class="navbar">
+    <div class="menu-izquierda">
+      <ul>
+        <li>
+          <a href="01-menuPrincipal2.html"
+            ><img src="images/turn-back.png" alt="home logo" width="40px"
+          /></a>
+        </li>
+        <li class="dropdown">
+          <a href="#menu" class="dropbtn"
+            ><img src="images/menu.png" alt="menu-logo" width="40px"
+          /></a>
+          <div class="dropdown-content">
+            <a href="05-funcionalidades.html"
+              >Funciones
+              <img src="images/tools.png" alt="tools-logo" width="14px"
+            /></a>
+            <a href="02-conexion.html"
+              >Conexión
+              <img src="images/wifi-alt.png" alt="wifi-logo" width="14px"
+            /></a>
+            <a href="06-historialDatos.html"
+              >Historial de datos
+              <img src="images/auto-sync.png" alt="data-logo" width="14px"
+            /></a>
+          </div>
+        </li>
+        <li>
+          <a href="04-contacto.html"
+            ><img
+              src="images/customer-service.png"
+              alt="contact-logo"
+              width="40px"
+          /></a>
+        </li>
+      </ul>
     </div>
 
-    <section class="presentacion" id="presentacion">
-      <h1>Conecta tu nuevo dispositivo</h1>
-      <p>
-        GreenFriend es la solucion ideal para el cuidado de tus plantas. Con
-        tecnologia avanzada y un diseño intuitivo, este producto te ayuda a
-        monitorear la humedad y la temperatura, asegurando el crecimiento y
-        salud de tus plantas.
-      </p>
-    </section>
-    <section id="datos-ubidots">
-  <h2>Datos en tiempo real</h2>
-  <p>Temperatura de Suelo: <span id="temp-suelo">Cargando...</span></p>
-  <p>Temperatura de Ambiente: <span id="temp-ambiente">Cargando...</span></p>
-  <p>Estado de Comparación: <span id="estado-comparacion">Esperando...</span></p>
-</section>
+    <div class="center-content">
+      <img
+        src="images/Diseño_sin_título-4-removebg-preview.png"
+        alt="Logo Empresa"
+        class="logo"
+        width="40px"
+      />
+      <h1 class="titulo">GreenFriend</h1>
+    </div>
+  </div>
 
-<script>
-  const UBIDOTS_TOKEN = "TU_TOKEN_AQUI";
-  const DEVICE_LABEL = "nombre_del_dispositivo";
-  const VARIABLE_TEMP_SUELO = "temp_suelo";
-  const VARIABLE_TEMP_AMBIENTE = "temp_ambiente";
+  <!-- Nueva Interfaz de Monitoreo -->
+  <section class="monitoreo">
+    <h2>Monitorización de Variables</h2>
+    <p>Consulta en tiempo real las variables desde Ubidots:</p>
+    <div class="monitor-stats">
+      <div class="monitor-item">
+        <h3>Temperatura</h3>
+        <p id="temperatura">Cargando...</p>
+      </div>
+      <div class="monitor-item">
+        <h3>Humedad Relativa</h3>
+        <p id="humedad-relativa">Cargando...</p>
+      </div>
+      <div class="monitor-item">
+        <h3>Humedad del Suelo</h3>
+        <p id="humedad-suelo">Cargando...</p>
+      </div>
+    </div>
+  </section>
 
-  async function obtenerDatosUbidots() {
-    try {
-      const urlTempSuelo = `https://industrial.api.ubidots.com/api/v1.6/devices/${DEVICE_LABEL}/${VARIABLE_TEMP_SUELO}/lv`;
-      const urlTempAmbiente = `https://industrial.api.ubidots.com/api/v1.6/devices/${DEVICE_LABEL}/${VARIABLE_TEMP_AMBIENTE}/lv`;
+  <!-- JavaScript -->
+  <script>
+    // URLs de las variables en Ubidots
+    const UBIDOTS_API_URLS = {
+      "temperatura": "https://industrial.api.ubidots.com/api/v1.6/devices/tamagochi/temperatura/values",
+      "humedad-relativa": "https://industrial.api.ubidots.com/api/v1.6/devices/tamagochi/humedad-relativa/values",
+      "humedad-tierra": "https://industrial.api.ubidots.com/api/v1.6/devices/tamagochi/humedad-tierra/values"
+    };
 
-      const headers = {
-        "Content-Type": "application/json",
-        "X-Auth-Token": UBIDOTS_TOKEN,
-      };
+    // Token de Ubidots
+    const TOKEN = "BBUS-nIOKgEXffQjNNp98tpIWV4MpHlHMhG"; // Sustituye por tu API Key de Ubidots
 
-      const [respSuelo, respAmbiente] = await Promise.all([
-        fetch(urlTempSuelo, { headers }),
-        fetch(urlTempAmbiente, { headers }),
-      ]);
-
-      const tempSuelo = await respSuelo.text();
-      const tempAmbiente = await respAmbiente.text();
-
-      document.getElementById("temp-suelo").innerText = `${tempSuelo}°C`;
-      document.getElementById("temp-ambiente").innerText = `${tempAmbiente}°C`;
-
-      // Enviar los datos al backend para comparar
-      compararDatos(tempSuelo, tempAmbiente);
-    } catch (error) {
-      console.error("Error al obtener datos de Ubidots:", error);
+    // Función para obtener y mostrar datos
+    async function obtenerDatos() {
+      try {
+        const respuestas = await Promise.all(
+          Object.entries(UBIDOTS_API_URLS).map(async ([nombre, url]) => {
+            const response = await fetch(url, {
+              headers: { "X-Auth-Token": TOKEN }
+            });
+            const data = await response.json();
+            const valor = data?.results?.[0]?.value || "No disponible";
+            document.getElementById(nombre).innerText =
+              nombre === "temperatura" ? ${valor}°C : ${valor}%;
+          })
+        );
+      } catch (error) {
+        console.error("Error al obtener los datos de Ubidots:", error);
+      }
     }
-  }
 
-  async function compararDatos(tempSuelo, tempAmbiente) {
-    try {
-      const response = await fetch("/comparar", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tempSuelo, tempAmbiente }),
-      });
-
-      const resultado = await response.json();
-      document.getElementById("estado-comparacion").innerText =
-        resultado.estado || "Error en la comparación";
-    } catch (error) {
-      console.error("Error al comparar datos:", error);
-    }
-  }
-
-  setInterval(obtenerDatosUbidots, 5000);
-  obtenerDatosUbidots();
-</script>
-  </body>
+    // Actualizar los datos cada 10 segundos
+    setInterval(obtenerDatos, 10000);
+    obtenerDatos();
+  </script>
+</body>
 </html>
